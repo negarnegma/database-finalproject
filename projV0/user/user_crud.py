@@ -5,6 +5,16 @@ import database as db
 from user.user import User
 
 
+def add_balance(user_id, amount):
+    con = db.get_connection_func()
+    cur = con.cursor()
+    cur.execute("SELECT balance from wallet where owner_id = %s", (user_id,))
+    row = cur.fetchone()
+    cur.execute("update wallet set balance =%s where owner_id = %s", (row[0] + amount, user_id))
+    con.commit()
+    con.close()
+
+
 def register_user(nasional_number, fullname, address, password):
     salt = uuid.uuid4().hex
     hashed_password = hashlib.sha512((password + salt).encode()).hexdigest()
@@ -22,6 +32,7 @@ def login_user(nasional_number, password):
     cur = con.cursor()
     cur.execute("SELECT pass, salt from registering_users_view where nasional_number = %s", (nasional_number,))
     row = cur.fetchone()
+    con.close()
     if row:
         hashed = row[0]
         salt = row[1]
@@ -33,16 +44,17 @@ def login_user(nasional_number, password):
         return False
 
 
-def print_users():
+def get_all_users(size, page):
     con = db.get_connection_func()
 
     cur = con.cursor()
-    cur.execute("SELECT * from \"user\"", )
+    cur.execute("select  id, nasional_number, fullname, address, register_date "
+                "from \"user\" "
+                "order by register_date desc "
+                "limit %s offset %s", (size, size * (page - 1)))
     rows = cur.fetchall()
 
     for row in rows:
-        p1 = User(row[0], row[1])
-        print(p1.user_id, p1.full_name)
-
-    print("Operation done successfully")
+        p1 = User(row[0], row[1], row[2], row[3], row[4])
+        print(p1)
     con.close()
