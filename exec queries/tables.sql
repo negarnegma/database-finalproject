@@ -18,8 +18,8 @@ create table ssh
 create table akshaye_tabriz
 (
     id   serial primary key,
-    pass varchar(50),
-    salt varchar(50)
+    pass varchar(128),
+    salt varchar(128)
 );
 create table "user"
 (
