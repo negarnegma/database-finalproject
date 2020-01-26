@@ -1,5 +1,7 @@
 import database.database as db
 from resources.ssh import SSH
+from resources.ordered import Ordered
+from resources.offered import Offered
 from user import user_crud
 
 
@@ -19,6 +21,43 @@ def add_offered_resource(user_id, offered_config):
     con.close()
 
 
+def get_offered_resources():
+    con = db.get_connection_func()
+    cur = con.cursor()
+    cur.execute("select id, os, ram, cores, disk, cpu_freq, bound_rate"
+                " from offered_config ")
+
+    rows = cur.fetchall()
+
+    offers = []
+    for row in rows:
+        p1 = Offered(row[0], row[1], row[2], row[3], row[4], row[5], row[6])
+        offers.append(p1)
+
+    con.close()
+
+    return offers
+
+
+def update_offered_resource(user_id, offered_id, new_offered):
+
+    if not (user_crud.is_admin(user_id)):
+        raise Exception('access denied')
+
+    con = db.get_connection_func()
+    cur = con.cursor()
+    cur.execute(
+        "update offered_config set os = %s , set ram = %s , set cores = %s , "
+        "set disk = %s , set cpu_freq = %s , set bound_rate = %s "
+        "where id = %s ",
+        (new_offered.os, new_offered.ram, new_offered.cores,
+         new_offered.disk, new_offered.cpu_freq, new_offered.bound_rate,
+         offered_id))
+
+    con.commit()
+    con.close()
+
+
 # ###########user (ordered) configs####################
 def add_user_resource(user_id, ordered):
     con = db.get_connection_func()
@@ -30,6 +69,45 @@ def add_user_resource(user_id, ordered):
         (ordered.os, ordered.ram, ordered.cores,
          ordered.disk, ordered.cpu_freq, ordered.bound_rate,
          ordered.ssh_id, user_id, 0, ordered.offered_config_id))
+
+    con.commit()
+    con.close()
+
+
+def get_user_resources(user_id):
+    con = db.get_connection_func()
+    cur = con.cursor()
+    cur.execute(
+        "select id, os, ram, cores, disk, cpu_freq, bound_rate,"
+        " ssh_id, owner_id, daily_cost, offered_config_id"
+        " from user_config "
+        " where owner_id = %s ",
+        (user_id,))
+
+    rows = cur.fetchall()
+
+    ordered = []
+    for row in rows:
+        p1 = Ordered(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10])
+        ordered.append(p1)
+
+    con.close()
+
+    return ordered
+
+
+def update_user_resource(user_id, ordered_id, new_ordered):
+    con = db.get_connection_func()
+    cur = con.cursor()
+    cur.execute(
+        "update user_config set os = %s , set ram = %s , set cores = %s , "
+        "set disk = %s , set cpu_freq = %s , set bound_rate = %s ,"
+        " set ssh_id = %s , set offered_config_id = %s"
+        "where id = %s and owner_id = %s",
+        (new_ordered.os, new_ordered.ram, new_ordered.cores,
+         new_ordered.disk, new_ordered.cpu_freq, new_ordered.bound_rate,
+         new_ordered.ssh_id, new_ordered.offered_config_id,
+         ordered_id, user_id))
 
     con.commit()
     con.close()
