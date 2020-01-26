@@ -1,10 +1,11 @@
 import hashlib
 import uuid
 
-import database as db
+import database.database as db
 from user.user import User
 
 
+# ###########wallet####################
 def add_balance(user_id, amount):
     con = db.get_connection_func()
     cur = con.cursor()
@@ -15,6 +16,17 @@ def add_balance(user_id, amount):
     con.close()
 
 
+def get_balance(user_id):
+    con = db.get_connection_func()
+    cur = con.cursor()
+    cur.execute("SELECT balance from "
+                "wallet where owner_id = %s", (user_id,))
+    row = cur.fetchone()
+    con.close()
+    return row[0]
+
+
+# ############register and login####################
 def register_user(nasional_number, fullname, address, password):
     salt = uuid.uuid4().hex
     hashed_password = hashlib.sha512((password + salt).encode()).hexdigest()
@@ -54,7 +66,24 @@ def get_all_users(size, page):
                 "limit %s offset %s", (size, size * (page - 1)))
     rows = cur.fetchall()
 
+    users = []
     for row in rows:
         p1 = User(row[0], row[1], row[2], row[3], row[4])
-        print(p1)
+        users.append(p1)
     con.close()
+
+    return users
+
+
+def is_admin(user_id):
+    con = db.get_connection_func()
+
+    cur = con.cursor()
+    cur.execute("select  role "
+                "from \"user\" "
+                "where id = %s", (user_id,))
+    row = cur.fetchone()
+
+    con.close()
+
+    return row[0] == 0  # todo check

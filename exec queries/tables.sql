@@ -13,7 +13,9 @@ create table ssh
 (
     id      serial primary key,
     name    varchar(50),
-    content varchar(3000)
+    content varchar(3000),
+    owner_id int references "user" (id),
+
 );
 create table akshaye_tabriz
 (
@@ -37,18 +39,22 @@ create table wallet
     balance  float,
     owner_id int references "user" (id)
 );
-create table user_ssh
-(
-    user_id int references "user" (id),
-    ssh_id  int references ssh (id)
-);
+-- create table user_ssh
+-- (
+--     user_id int references "user" (id),
+--     ssh_id  int references ssh (id)
+-- );
 create table ticket
 (
     id          serial primary key,
+    owner_id int references "user" (id),
     question    varchar(200),
+    responder_id int references "user" (id),
     answer      varchar(200),
     answer_date timestamp,
-    status      int
+    status      int,
+    first_ticket_id int references ticket(id),
+    order int
 );
 create table user_config
 (
