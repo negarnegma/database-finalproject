@@ -77,10 +77,11 @@ create table "snapshot"
     id          serial primary key,
     create_date timestamp,
     size        float
-);
-create table user_config_snapshot
-(
     user_config_id int references user_config (id),
-    snapshot_id    int references "snapshot" (id)
-
 );
+-- create table user_config_snapshot
+-- (
+--     user_config_id int references user_config (id),
+--     snapshot_id    int references "snapshot" (id)
+
+-- );

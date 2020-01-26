@@ -47,3 +47,16 @@ def get_all_ssh(user_id):
     con.close()
 
     return sshs
+
+
+# ######################################333
+def owns(user_id, user_config_id):
+    con = db.get_connection_func()
+    cur = con.cursor()
+    cur.execute("select id from user_config "
+                "where id = %s and owner_id = %s",
+                (user_config_id, user_id))
+
+    row = cur.fetchone()
+    con.close()
+    return row
