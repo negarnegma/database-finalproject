@@ -1,7 +1,5 @@
 import database.database as db
 from resources.snapshot import Snapshot
-from resources.ssh import SSH
-from user import user_crud
 from resources import resources_crud
 import time
 

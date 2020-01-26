@@ -19,6 +19,22 @@ def add_offered_resource(user_id, offered_config):
     con.close()
 
 
+# ###########user (ordered) configs####################
+def add_user_resource(user_id, ordered):
+    con = db.get_connection_func()
+    cur = con.cursor()
+    cur.execute(
+        "insert into user_config (os, ram, cores, disk, cpu_freq, bound_rate,"
+        " ssh_id, owner_id, daily_cost, offered_config_id)"
+        "values (%s, %s, %s, %s, %s, %s)",
+        (ordered.os, ordered.ram, ordered.cores,
+         ordered.disk, ordered.cpu_freq, ordered.bound_rate,
+         ordered.ssh_id, user_id, 0, ordered.offered_config_id))
+
+    con.commit()
+    con.close()
+
+
 # ###########SSH####################
 def add_ssh(user_id, ssh):
     con = db.get_connection_func()
