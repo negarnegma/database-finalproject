@@ -139,7 +139,20 @@ def back_to_ijadm2(ui):
 
 
 def back_to_taghir_moshakhasat(ui):
-    ui.stackedWidget.setCurrentIndex(5)
+    try:
+        global current_user_id
+        ui.stackedWidget.setCurrentIndex(5)
+        confs = resources_crud.get_user_resources(current_user_id)
+        ui.manbaIds.clear()
+        for c in confs:
+            ui.manbaIds.addItem(str(c.ordered_id))
+    except Exception as e:
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Warning)
+        msg.setText(str(e))
+        msg.setWindowTitle("Err..")
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.exec_()
 
 
 def back_to_moshahede_gheimat(ui):
@@ -179,35 +192,102 @@ def get_balance(ui):
 
 
 def get_all_user_tickets(ui):
-    global current_user_id
-    ticket_crud.get_all_user_tickets(ui, current_user_id)
+    try:
+        global current_user_id
+        ticket_crud.get_all_user_tickets(ui, current_user_id)
+    except Exception as e:
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Warning)
+        msg.setText(str(e))
+        msg.setWindowTitle("Err..")
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.exec_()
 
 
 def get_all_answers_for_a_ticket(ui):
-    global current_user_id
-    ticket_crud.get_all_answers_for_a_ticket(ui, current_user_id, ui.textEdit_6.toPlainText())
+    try:
+        global current_user_id
+        ticket_crud.get_all_answers_for_a_ticket(ui, current_user_id, ui.textEdit_6.toPlainText())
+    except Exception as e:
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Warning)
+        msg.setText(str(e))
+        msg.setWindowTitle("Err..")
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.exec_()
 
 
 def add_ticket(ui):
-    global current_user_id
-    ticket_crud.add_ticket(current_user_id, ui.textEdit.toPlainText())
+    try:
+        global current_user_id
+        ticket_crud.add_ticket(current_user_id, ui.textEdit.toPlainText())
+    except Exception as e:
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Warning)
+        msg.setText(str(e))
+        msg.setWindowTitle("Err..")
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.exec_()
 
 
 def answer_ticket(ui):
-    global current_user_id
-    ticket_crud.answer_ticket(current_user_id, ui.answer_text.toPlainText(), ui.textEdit_6.toPlainText())
+    try:
+        global current_user_id
+        ticket_crud.answer_ticket(current_user_id, ui.answer_text.toPlainText(), ui.textEdit_6.toPlainText())
+    except Exception as e:
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Warning)
+        msg.setText(str(e))
+        msg.setWindowTitle("Err..")
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.exec_()
 
 
 def add_snapshot(ui):
-    global current_user_id
-    size = randint(1, 300)
-    ui.snapshot_size.setText(str(size))
-    snapshot_crud.add_snapshot(current_user_id, ui.userconfigId.toPlainText(), size)
+    try:
+        global current_user_id
+        size = randint(1, 300)
+        ui.snapshot_size.setText(str(size))
+        snapshot_crud.add_snapshot(current_user_id, ui.userconfigId.toPlainText(), size)
+    except Exception as e:
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Warning)
+        msg.setText(str(e))
+        msg.setWindowTitle("Err..")
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.exec_()
 
 
 def get_snapshots(ui):
-    global current_user_id
-    snapshot_crud.get_snapshots(ui.userconfigId.toPlainText())
+    try:
+        global current_user_id
+        snpshots = snapshot_crud.get_snapshots(ui.userconfigId.toPlainText())
+
+        ui.snapshots.setText("")
+        ui.snapshots.insertPlainText("date                     size")
+        for snpshot in snpshots:
+            ui.snapshots.insertPlainText("\n%21.21s %s" %
+                                         (snpshot.create_date, snpshot.size))
+    except Exception as e:
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Warning)
+        msg.setText(str(e))
+        msg.setWindowTitle("Err..")
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.exec_()
+
+
+def get_user_confs(ui):
+    try:
+        global current_user_id
+        resources_crud.get_user_resources(current_user_id)
+    except Exception as e:
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Warning)
+        msg.setText(str(e))
+        msg.setWindowTitle("Err..")
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.exec_()
 
 
 def create_u_conf(ui):
@@ -234,7 +314,7 @@ def create_u_conf(ui):
         msg.setWindowTitle("موفقیت")
         msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
 
-        retval = msg.exec_()
+        msg.exec_()
 
     except Exception as e:
         ui.bandwidth_in2_2.setText(str(e))

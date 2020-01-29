@@ -32,7 +32,7 @@ background-color: rgb(85, 255, 255);
 background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="loginpage">
      <widget class="QWidget" name="widget" native="true">
@@ -458,7 +458,7 @@ background-color: rgb(255, 255, 255);</string>
 background-color: rgb(85, 255, 255);</string>
        </property>
        <property name="text">
-        <string>تغییر مشخصات منبع</string>
+        <string>مدیریت منابع</string>
        </property>
       </widget>
       <widget class="QPushButton" name="ijad_btn1">
@@ -1833,7 +1833,7 @@ background-color: rgb(255, 255, 255);</string>
 background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="text">
-       <string>تغییر مشخصات منبع</string>
+       <string>مدیریت منابع</string>
       </property>
      </widget>
      <widget class="QPushButton" name="ticket_btn2">
@@ -2886,7 +2886,7 @@ background-color: rgb(85, 255, 255);</string>
        </font>
       </property>
       <property name="text">
-       <string>مشخصات منبع جدید</string>
+       <string>منبع را انتخاب نمایید:</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_3">
@@ -3057,7 +3057,7 @@ background-color: rgb(85, 255, 255);</string>
        <string notr="true">background-color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>تغییر مشخصات منبع</string>
+       <string>مدیریت منابع</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_81">
@@ -3178,6 +3178,16 @@ background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="manbaIds">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>60</y>
+        <width>69</width>
+        <height>22</height>
+       </rect>
       </property>
      </widget>
     </widget>
@@ -3517,7 +3527,7 @@ background-color: rgb(85, 255, 255);</string>
 background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="text">
-       <string>تغییر مشخصات منبع</string>
+       <string>مدیریت منابع</string>
       </property>
      </widget>
      <widget class="QPushButton" name="wallet_btn_11">
@@ -3737,7 +3747,7 @@ background-color: rgb(255, 255, 255);</string>
 background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="text">
-       <string>تغییر مشخصات منبع</string>
+       <string>مدیریت منابع</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_50">
@@ -4205,7 +4215,7 @@ background-color: rgb(255, 255, 255);</string>
 background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="text">
-       <string>تغییر مشخصات منبع</string>
+       <string>مدیریت منابع</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_59">
@@ -4607,7 +4617,7 @@ background-color: rgb(85, 255, 255);</string>
 background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="text">
-       <string>تغییر مشخصات منبع</string>
+       <string>مدیریت منابع</string>
       </property>
      </widget>
      <widget class="QGraphicsView" name="graphicsView_23">
@@ -4846,7 +4856,7 @@ background-color: rgb(85, 255, 255);</string>
 background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="text">
-       <string>تغییر مشخصات منبع</string>
+       <string>مدیریت منابع</string>
       </property>
      </widget>
      <widget class="QPushButton" name="wallet_btn_9">
@@ -5263,7 +5273,7 @@ background-color: rgb(85, 255, 255);</string>
 background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="text">
-       <string>تغییر مشخصات منبع</string>
+       <string>مدیریت منابع</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_68">
