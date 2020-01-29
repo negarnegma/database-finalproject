@@ -11,7 +11,7 @@ def add_balance(user_id, amount):
     cur = con.cursor()
     cur.execute("SELECT balance from wallet where owner_id = %s", (user_id,))
     row = cur.fetchone()
-    cur.execute("update wallet set balance =%s where owner_id = %s", (row[0] + amount, user_id))
+    cur.execute("update wallet set balance =%s where owner_id = %s", (float(row[0]) + float(amount), user_id))
     con.commit()
     con.close()
 

@@ -121,14 +121,26 @@ def list_of_gozaresh(ui):
     ui.stackedWidget.setCurrentIndex(10)
 
 
+def add_balance(ui):
+    global current_user_id
+    user_crud.add_balance(current_user_id, ui.amount.toPlainText())
+    get_balance(ui)
+
+
+def get_balance(ui):
+    global current_user_id
+    balance = user_crud.get_balance(current_user_id)
+    ui.label_22.setText(str(balance))
+
+
 def login_btn_clicked(ui):
     try:
-
         if user_crud.login_user(ui.name_in1.toPlainText(), ui.password_in1.toPlainText()):
             global current_user_id
             current_user_id = user_crud.get_user_id(ui.name_in1.toPlainText())
             print(current_user_id)
             ui.stackedWidget.setCurrentIndex(2)
+            get_balance(ui)
         else:
             ui.name_in1.setText("wrong")
             ui.password_in1.setText("wrong")
@@ -158,11 +170,6 @@ def sabtenam_btn_clicked2(ui):
 
 if __name__ == "__main__":
     import sys
-
-    # cur.execute("select id,first_name,family_name,ssn,email_address,password from sabtenam")
-    # rows = cur.fetchall()
-    # for r in rows:
-    # print(f"id : {r[0]} , first_name : {r[1]} , family_name : {r[2]} , ssn : {r[3]} , email_address : {r[4]} , password : {r[5]}")
 
     input = 8
     app = QtWidgets.QApplication(sys.argv)
@@ -197,8 +204,8 @@ if __name__ == "__main__":
     ui.sabtenam_btn3_10.clicked.connect(partial(back_to_sabtenam, ui))
 
     # connect wallet buttons
-    # ui.wallet_btn1.clicked.connect(partial(user_crud.get_balance(ui.name_in1))) #mojodi ra namayesh bede
-    # ui.afzayesh_mojodi_btn.clicked(partial(user_crud.add_balance(ui.name_in1,ui.amount)))# afzayesh mojodi
+    ui.wallet_btn1.clicked.connect(partial(get_balance, ui))  # mojodi ra namayesh bede
+    ui.afzayesh_mojodi_btn.clicked.connect(partial(add_balance, ui))  # afzayesh mojodi  از این جا هیچ وقت نمایش نمیده!! چرا؟! مهم نیست حالا جای دیگه نمایش میدیم
     ui.wallet_btn2.clicked.connect(partial(back_to_wallet, ui))
     ui.wallet_btn_12.clicked.connect(partial(back_to_wallet, ui))
     ui.wallet_btn_11.clicked.connect(partial(back_to_wallet, ui))
