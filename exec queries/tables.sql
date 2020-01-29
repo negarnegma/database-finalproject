@@ -48,10 +48,10 @@ create table ticket
 (
     id          serial primary key,
     owner_id int references "user" (id),
-    question    varchar(200),
+    content    varchar(200),
     -- responder_id int references "user" (id),
     -- answer      varchar(200),
-    answer_date timestamp,
+    c_date timestamp,
     status      int,
     first_ticket_id int references ticket(id),
     order int

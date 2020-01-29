@@ -48,29 +48,32 @@ def get_all_user_tickets(ui, user_id):
     con.close()
     # print all_user_tickets
     ui.textEdit_5.setText("")
-    ui.textEdit_5.insertPlainText("id   date          content")
+    ui.textEdit_5.insertPlainText("id   date                 content")
     for ticket in tickets:
-        ui.textEdit_5.insertPlainText("\n%5.5s%14.14s%s" %
+        ui.textEdit_5.insertPlainText("\n%5.5s%21.21s%s" %
                                       (ticket.ticket_id, ticket.answer_date, ticket.question))
 
 
 def get_all_answers_for_a_ticket(ui, user_id, ticket_id):
     if ticket_id == 0:
         ui.textEdit_4.setText("")
+        return None
     tickets = []
     con = db.get_connection_func()
     cur = con.cursor()
     cur.execute("select id, owner_id, content, c_date, status, \"order\"  from ticket"
                 " where id = %s",
                 (ticket_id,))
-    rows = cur.fetchall()
-    for row in rows:
-        p1 = (row[0], row[1], row[2], row[3], row[4], 0, 0)
-        tickets.append(p1)
+    row = cur.fetchone()
+    p1 = Ticket(row[0], row[1], row[2], row[3], row[4], 0, 0)
+
+    if p1.owner_id != user_id:
+        ui.textEdit_4.setText("access denied!")
+        return None
 
     cur.execute("select id, owner_id, content, c_date, status, \"order\"  from ticket"
-                " where  owner_id = %s and first_ticket_id = %s",
-                (user_id, ticket_id))
+                " where first_ticket_id = %s",
+                (ticket_id,))
     rows = cur.fetchall()
     for row in rows:
         p1 = Ticket(row[0], row[1], row[2], row[3], row[4], ticket_id, row[5])
@@ -81,9 +84,9 @@ def get_all_answers_for_a_ticket(ui, user_id, ticket_id):
     sorted(key=lambda x: x.order)
 
     # print all_answers_for_a_ticket
-    ui.textEdit_4.insertPlainText("id   date          content")
+    ui.textEdit_4.insertPlainText("id   date                 content")
     for ticket in tickets:
-        ui.textEdit_4.insertPlainText("\n%5.5s%14.14s%s" %
+        ui.textEdit_4.insertPlainText("\n%5.5s%21.21s%s" %
                                       (ticket.ticket_id, ticket.answer_date, ticket.question))
 
 
