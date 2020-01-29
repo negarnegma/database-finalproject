@@ -1,3 +1,5 @@
+from random import randint
+
 import psycopg2
 import hashlib
 import uuid
@@ -8,6 +10,7 @@ import grafic7
 import hg
 from tkinter import *
 from user import user_crud
+from resources import snapshot_crud
 import database as db
 
 id1 = 8
@@ -153,6 +156,18 @@ def answer_ticket(ui):
     ticket_crud.answer_ticket(current_user_id, ui.answer_text.toPlainText(), ui.textEdit_6.toPlainText())
 
 
+def add_snapshot(ui):
+    global current_user_id
+    size = randint(1, 300)
+    ui.snapshot_size.setText(str(size))
+    snapshot_crud.add_snapshot(current_user_id, ui.userconfigId.toPlainText(), size)
+
+
+def get_snapshots(ui):
+    global current_user_id
+    snapshot_crud.get_snapshots(ui.userconfigId.toPlainText())
+
+
 def login_btn_clicked(ui):
     try:
         if user_crud.login_user(ui.name_in1.toPlainText(), ui.password_in1.toPlainText()):
@@ -279,6 +294,8 @@ if __name__ == "__main__":
     ui.pushButton_64.clicked.connect(partial(back_to_snapshot, ui))
     ui.pushButton_71.clicked.connect(partial(back_to_snapshot, ui))
     ui.pushButton_87.clicked.connect(partial(back_to_snapshot, ui))
+    ui.addsnapshot.clicked.connect(partial(add_snapshot, ui))
+    ui.getsnapshots.clicked.connect(partial(get_snapshots, ui))
 
     # connect ticket button
     ui.ticket_btn1.clicked.connect(partial(back_to_send_ticket, ui))

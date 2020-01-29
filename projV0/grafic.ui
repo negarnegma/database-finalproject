@@ -32,7 +32,7 @@ background-color: rgb(85, 255, 255);
 background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="currentIndex">
-     <number>8</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="loginpage">
      <widget class="QWidget" name="widget" native="true">
@@ -3636,8 +3636,8 @@ background-color: rgb(85, 255, 255);</string>
       <property name="geometry">
        <rect>
         <x>460</x>
-        <y>170</y>
-        <width>61</width>
+        <y>130</y>
+        <width>91</width>
         <height>31</height>
        </rect>
       </property>
@@ -3647,7 +3647,7 @@ background-color: rgb(85, 255, 255);</string>
        </font>
       </property>
       <property name="text">
-       <string>نام منبع</string>
+       <string>شناسه منیع</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_170">
@@ -3687,9 +3687,9 @@ background-color: rgb(85, 255, 255);</string>
      <widget class="QLabel" name="label_171">
       <property name="geometry">
        <rect>
-        <x>370</x>
-        <y>260</y>
-        <width>151</width>
+        <x>430</x>
+        <y>170</y>
+        <width>121</width>
         <height>31</height>
        </rect>
       </property>
@@ -3702,11 +3702,11 @@ background-color: rgb(85, 255, 255);</string>
        <string>سایز اسنپ شات</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_4">
+     <widget class="QPushButton" name="addsnapshot">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>410</y>
+        <x>130</x>
+        <y>130</y>
         <width>151</width>
         <height>41</height>
        </rect>
@@ -3720,7 +3720,7 @@ background-color: rgb(85, 255, 255);</string>
        <string notr="true">background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="text">
-       <string>گرفتن اسنپ شات</string>
+       <string>اسنپ شات بگیر</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_54">
@@ -3744,12 +3744,12 @@ background-color: rgb(85, 255, 255);</string>
        <string>لیست گزارش ها</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="os_name">
+     <widget class="QTextEdit" name="userconfigId">
       <property name="geometry">
        <rect>
-        <x>170</x>
-        <y>170</y>
-        <width>151</width>
+        <x>380</x>
+        <y>130</y>
+        <width>71</width>
         <height>31</height>
        </rect>
       </property>
@@ -3757,17 +3757,56 @@ background-color: rgb(85, 255, 255);</string>
        <string notr="true">background-color: rgb(255, 255, 255);</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="size_snapshot">
+     <widget class="QLabel" name="snapshot_size">
       <property name="geometry">
        <rect>
-        <x>170</x>
-        <y>260</y>
-        <width>151</width>
+        <x>390</x>
+        <y>170</y>
+        <width>21</width>
         <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="snapshots">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>270</y>
+        <width>191</width>
+        <height>311</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="getsnapshots">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>270</y>
+        <width>221</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(85, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>لیست اسنپ شات های این منبع</string>
       </property>
      </widget>
     </widget>

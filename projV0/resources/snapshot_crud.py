@@ -1,6 +1,7 @@
 import database.database as db
 from resources.snapshot import Snapshot
 from resources import resources_crud
+import psycopg2
 import time
 
 
@@ -12,7 +13,7 @@ def add_snapshot(user_id, user_config_id, size):
     cur = con.cursor()
     cur.execute("insert into \"snapshot\"(create_date, size, user_config_id)"
                 "values (%s, %s, %s)",
-                (time.time(), size, user_config_id))
+                (psycopg2.TimestampFromTicks(time.time()), size, user_config_id))
 
     con.commit()
     con.close()

@@ -1,7 +1,7 @@
 import database.database as db
-from resources.ssh import SSH
-from resources.ordered import Ordered
-from resources.offered import Offered
+from resources.Offered import Offered
+from resources.Ordered import Ordered
+from resources.SSH import SSH
 from user import user_crud
 
 
