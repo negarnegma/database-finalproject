@@ -1,65 +1,77 @@
 import psycopg2
+import hashlib
+import uuid
+import ticket_crud
 from functools import partial
 from PyQt5 import QtWidgets
-import grafic
+import grafic7
+import hg
+from tkinter import *
+from user import user_crud
+import database as db
 id1 = 8
-# con = psycopg2.connect(
-#     host = "",
-#     database = "company",
-#     user = "postgres",
-#     password = 36016778
-# )
 con = psycopg2.connect(database="projV0", user="postgres", password="12", host="127.0.0.1", port="5432")
-
 #cursor
 cur = con.cursor();
 
-def connect_to_db(ui,input):
-    input = input+1
-    name_in = ui.name_in2.toPlainText()
-    family_in = ui.family_in2.toPlainText()
-    ssn_in = ui.ssn_in2.toPlainText()
-    email_in = ui.email_in2.toPlainText()
-    password_in = ui.password_in2.toPlainText()
-    cur.execute("insert into sabtenam (id,first_name,family_name,ssn,email_address,password) values (%s,%s,%s,%s,%s,%s)", (input, name_in,family_in,ssn_in,email_in,password_in))
-    cur.execute("select id,first_name,family_name,ssn,email_address,password from sabtenam")
-    rows = cur.fetchall()
-    for r in rows:
-      print(f"id : {r[0]} , first_name : {r[1]} , family_name : {r[2]} , ssn : {r[3]} , email_address : {r[4]} , password : {r[5]}")
-    con.commit()
-    cur.close()
-    con.close()
-    sabtenam_btn_clicked2(ui)
+def set_labels(ui):
+    #resource 1
+    ui.label_239.setText("FreeBSD")
+    ui.label_241.setText("2")
+    ui.label_238.setText("3")
+    ui.label_240.setText("6")
+    ui.label_242.setText("20")
+    ui.label_243.setText("4")
+    ui.label_158.setText("142,000")
 
-def check_valid_login(ui):
+    #resource 2
+    ui.label_246.setText("FreeBSD")
+    ui.label_247.setText("10")
+    ui.label_244.setText("4")
+    ui.label_248.setText("8")
+    ui.label_245.setText("25")
+    ui.label_249.setText("9")
+    ui.label_160.setText("259,000")
 
-    con.commit()
-    name_in = ui.name_in1.toPlainText()
-    password_in = ui.password_in1.toPlainText()
-    sql = "select * from sabtenam where first_name = %s and Password = %s"
-    val = (name_in,password_in)
-    res = cur.execute(sql, val)
-    sql = "select first_name from sabtenam where first_name = %s and password = %s"
-    res1=cur.execute(sql,(name_in,password_in))
-    print(res1)
-    #print(res)
-    #if result == 0:
-        #print("id or password is not correct !")
-    #else:
-        #login_btn_clicked(ui)
-    #cur.execute("select first_name,password from sabtenam s1 where exist (select * from sabtenam where first_name = s1.first_name and password = s1.password)")
-    #results = cur.fetchall()
-    #for r in results:
-        #print(f"id : {r[0]} , first_name : {r[1]}")
-        #if {r[0]} == name_in and {r[1]} == password_in:
-            #print("wellcom")
-    #print("error! you dont sabtenam.")
+    #resource 3
+    ui.label_258.setText("win7")
+    ui.label_259.setText("4")
+    ui.label_256.setText("2")
+    ui.label_260.setText("5")
+    ui.label_257.setText("10")
+    ui.label_261.setText("6")
+    ui.label_162.setText("92,000")
 
+    #resource 4
+    ui.label_252.setText("win7")
+    ui.label_253.setText("16")
+    ui.label_250.setText("2")
+    ui.label_254.setText("5")
+    ui.label_251.setText("30")
+    ui.label_255.setText("7")
+    ui.label_164.setText("179,000")
 
+    #resource 5
+    ui.label_264.setText("Linux")
+    ui.label_265.setText("8")
+    ui.label_262.setText("3")
+    ui.label_266.setText("6")
+    ui.label_263.setText("15")
+    ui.label_267.setText("7")
+    ui.label_166.setText("159,000")
 
-    cur.close()
-    con.close()
-    #login_btn_clicked(ui)
+    #resource 6
+    ui.label_270.setText("Linux")
+    ui.label_271.setText("12")
+    ui.label_268.setText("2")
+    ui.label_272.setText("7")
+    ui.label_269.setText("35")
+    ui.label_273.setText("12")
+    ui.label_168.setText("200,000")
+
+    ui.label_22.setText("0")
+    ui.label_23.setText("0")
+
 def back_to_login(ui):
     ui.stackedWidget.setCurrentIndex(0)
 
@@ -84,8 +96,14 @@ def back_to_snapshot(ui):
 def back_to_send_ticket(ui):
     ui.stackedWidget.setCurrentIndex(7)
 
-def back_to_list_gozaresh(ui):
+def back_to_ticket_answer(ui):
     ui.stackedWidget.setCurrentIndex(8)
+
+def back_to_list_gozaresh(ui):
+    ui.stackedWidget.setCurrentIndex(9)
+
+def list_of_gozaresh(ui):
+    ui.stackedWidget.setCurrentIndex(10)
 
 def login_btn_clicked(ui):
        ui.stackedWidget.setCurrentIndex(2)
@@ -102,16 +120,20 @@ if __name__ == "__main__":
     #rows = cur.fetchall()
    # for r in rows:
        # print(f"id : {r[0]} , first_name : {r[1]} , family_name : {r[2]} , ssn : {r[3]} , email_address : {r[4]} , password : {r[5]}")
+
     input =8
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = grafic.Ui_t()
+    ui = grafic7.Ui_t()
     ui.setupUi(MainWindow)
+    set_labels(ui)
     MainWindow.show()
     ui.stackedWidget.setCurrentIndex(0)
 
     #connect login button
-    ui.login_btn1.clicked.connect(partial(login_btn_clicked, ui))
+    #ui.login_btn1.clicked.connect(partial(user_crud.login_user(ui.name_in1.toPlainText(),ui.password_in1.toPlainText())))# login check shavad
+   # ui.login_btn1.clicked.connect(partial(login_btn_clicked, ui))
+    ui.login_btn1.clicked.connect(partial(login_btn_clicked,ui))
     ui.login_btn4.clicked.connect(partial(back_to_login, ui))
     ui.login_btn3.clicked.connect(partial(back_to_login, ui))
     ui.login_btn2_16.clicked.connect(partial(back_to_login, ui))
@@ -123,7 +145,7 @@ if __name__ == "__main__":
 
     #connect sabtenam button
     ui.sabtenam_btn1.clicked.connect(partial(sabtenam_btn_clicked1, ui))
-    ui.sabtenam_btn2.clicked.connect(partial(sabtenam_btn_clicked2, ui))
+#    ui.sabtenam_btn2.clicked.connect(partial(user_crud.register_user(ui.ssn_in2,ui.family_in2,ui.email_in2,ui.password_in2))) #user register
     ui.sabtenam_btn3.clicked.connect(partial(back_to_sabtenam, ui))
     ui.sabtenam_btn4.clicked.connect(partial(back_to_sabtenam, ui))
     ui.sabtenam_btn3_12.clicked.connect(partial(back_to_sabtenam, ui))
@@ -134,13 +156,15 @@ if __name__ == "__main__":
     ui.sabtenam_btn3_10.clicked.connect(partial(back_to_sabtenam, ui))
 
     #connect wallet buttons
-    ui.wallet_btn1.clicked.connect(partial(back_to_wallet, ui))
+    #ui.wallet_btn1.clicked.connect(partial(user_crud.get_balance(ui.name_in1))) #mojodi ra namayesh bede
+   # ui.afzayesh_mojodi_btn.clicked(partial(user_crud.add_balance(ui.name_in1,ui.amount)))# afzayesh mojodi
     ui.wallet_btn2.clicked.connect(partial(back_to_wallet, ui))
     ui.wallet_btn_12.clicked.connect(partial(back_to_wallet, ui))
     ui.wallet_btn_11.clicked.connect(partial(back_to_wallet, ui))
     ui.wallet_btn_7.clicked.connect(partial(back_to_wallet, ui))
     ui.wallet_btn_8.clicked.connect(partial(back_to_wallet, ui))
     ui.pushButton_65.clicked.connect(partial(back_to_wallet, ui))
+
 
     #connect ijad button
     ui.ijad_btn1.clicked.connect(partial(back_to_ijadm,ui))
@@ -203,6 +227,13 @@ if __name__ == "__main__":
     ui.pushButton_65.clicked.connect(partial(back_to_list_gozaresh,ui))
     ui.pushButton_69.clicked.connect(partial(back_to_list_gozaresh,ui))
 
-    #connect()
+    ticket_id = ui.textEdit_6.toPlainText()
+    question = ui.textEdit.toPlainText()
+
+    ui.pushButton_6.clicked.connect(partial(ticket_crud.get_all_user_tickets,(ui,ui.name_in1))) #moshahede all tickets
+    ui.pushButton_2.clicked.connect(partial(ticket_crud.get_all_answers_for_a_ticket,(ui,ui.name_in1,ticket_id))) #moshahede all answers for tickets
+    ui.pushButton_5.clicked.connect(partial(ticket_crud.add_ticket,(ui.name_in1,question))) #send ticket
+   # ui.pushButton.clicked(partial(ticket_crud.answer_ticket())) # see ticket answer
+    ui.pushButton_7.clicked.connect(partial(back_to_ticket_answer,ui)) # go to answer ticket page
 
     sys.exit(app.exec_())

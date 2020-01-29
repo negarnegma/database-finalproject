@@ -25,7 +25,6 @@ def get_balance(user_id):
     con.close()
     return row[0]
 
-
 # ############register and login####################
 def register_user(nasional_number, fullname, address, password):
     salt = uuid.uuid4().hex

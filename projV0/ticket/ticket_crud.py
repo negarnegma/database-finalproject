@@ -1,7 +1,7 @@
 import database.database as db
 from ticket.ticket import Ticket
 import time
-
+from tkinter import *
 
 # ###########tickets####################
 def add_ticket(user_id, question):
@@ -29,27 +29,23 @@ def answer_ticket(user_id, answer, last_ticket):
     con.close()
 
 
-def get_all_user_tickets(user_id):
+def get_all_user_tickets(ui,user_id):
+    tickets =[]
     con = db.get_connection_func()
     cur = con.cursor()
-    cur.execute("select id, owner_id, question, answer_date, status  from ticket"
-                "where  owner_id = %s and first_ticket_id = %s",
-                (user_id, 0))
+    cur.execute("select id, owner_id, question, answer_date, status  from ticket" "where  owner_id = %s and first_ticket_id = %s",(user_id, 0))
     rows = cur.fetchall()
-
-    tickets = []
-    for row in rows:
-        p1 = Ticket(row[0], row[1], row[2], row[3], row[4], 0, 0)
+    for x in rows:
+        p1 = (x[0], x[1], x[2], x[3], x[4], 0, 0)
         tickets.append(p1)
-
     con.close()
+    # print all_user_tickets
+    for i in range(tickets.__len__()):
+        ui.textEdit_5.insertPlainText(f" {tickets[i]} ")
 
-    return tickets
 
-
-def get_all_answers_for_a_ticket(user_id, ticket_id):
+def get_all_answers_for_a_ticket(ui,user_id, ticket_id):
     tickets = []
-
     con = db.get_connection_func()
     cur = con.cursor()
     cur.execute("select id, owner_id, question, answer_date, status, order  from ticket"
@@ -57,7 +53,7 @@ def get_all_answers_for_a_ticket(user_id, ticket_id):
                 (user_id, ticket_id))
     rows = cur.fetchall()
     for row in rows:
-        p1 = Ticket(row[0], row[1], row[2], row[3], row[4], 0, 0)
+        p1 = (row[0], row[1], row[2], row[3], row[4], 0, 0)
         tickets.append(p1)
 
     cur.execute("select id, owner_id, question, answer_date, status, order  from ticket"
@@ -65,9 +61,10 @@ def get_all_answers_for_a_ticket(user_id, ticket_id):
                 (user_id, ticket_id))
     rows = cur.fetchall()
     for row in rows:
-        p1 = Ticket(row[0], row[1], row[2], row[3], row[4], ticket_id, row[5])
+        p1 = (row[0], row[1], row[2], row[3], row[4], ticket_id, row[5])
         tickets.append(p1)
 
     con.close()
-
-    return tickets
+    # print all_answers_for_a_ticket
+    for i in range(tickets.__len__()):
+        ui.textEdit_4.insertPlainText(f" {tickets[i]} ")
