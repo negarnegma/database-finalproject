@@ -309,8 +309,8 @@
     </configuration>
     <list>
       <item itemvalue="Python.data" />
-      <item itemvalue="Python.datatest" />
       <item itemvalue="Python.test" />
+      <item itemvalue="Python.datatest" />
     </list>
     <recent_temporary>
       <list>
