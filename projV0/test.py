@@ -3,7 +3,7 @@ import hashlib
 import uuid
 from ticket import ticket_crud
 from functools import partial
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtGui
 import grafic7
 import hg
 from tkinter import *
@@ -123,8 +123,16 @@ def login_btn_clicked(ui):
     if user_crud.login_user(ui.name_in1.toPlainText(), ui.password_in1.toPlainText()):
         ui.stackedWidget.setCurrentIndex(2)
     else:
-        ui.name_in1.setText("wrong")
-        ui.password_in1.setText("wrong")
+        try:
+
+            ui.name_in1.setText("wrong")
+            ui.password_in1.setText("wrong")
+            cursor = ui.name_in1.textCursor()
+            cursor.setPosition(0)
+            cursor.setPosition(5, QtGui.QTextCursor.KeepAnchor)
+            ui.name_in1.setTextCursor(cursor)
+        except Exception as e:
+            print(e)
 
 
 def sabtenam_btn_clicked1(ui):
