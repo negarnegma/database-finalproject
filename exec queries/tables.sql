@@ -54,7 +54,7 @@ create table ticket
     c_date timestamp,
     status      int,
     first_ticket_id int references ticket(id),
-    order int
+    "order" int
 );
 create table user_config
 (
@@ -76,8 +76,8 @@ create table "snapshot"
 (
     id          serial primary key,
     create_date timestamp,
-    size        float
-    user_config_id int references user_config (id),
+    size        float,
+    user_config_id int references user_config (id)
 );
 -- create table user_config_snapshot
 -- (
