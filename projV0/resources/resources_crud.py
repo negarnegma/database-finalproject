@@ -116,6 +116,8 @@ def get_user_resource_info(user_id, ordered_id):
 def update_user_resource(user_id, ordered_id, new_ordered):
     con = db.get_connection_func()
     cur = con.cursor()
+    if new_ordered.ssh_id == 'None':
+        new_ordered.ssh_id = None
     cur.execute(
         "update user_config set os = %s ,  ram = %s ,  cores = %s , "
         " disk = %s ,  cpu_freq = %s ,  bound_rate = %s ,"
