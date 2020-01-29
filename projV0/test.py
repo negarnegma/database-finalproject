@@ -20,6 +20,8 @@ cur = con.cursor()
 
 current_user_id = 0
 
+chosen_config = 0
+
 
 def set_labels(ui):
     # resource 1
@@ -94,34 +96,58 @@ def back_to_wallet(ui):
 
 def back_to_ijadm(ui):
     ui.stackedWidget.setCurrentIndex(3)
+    ui.checkBox.setChecked(False)
+    ui.checkBox_2.setChecked(False)
+    ui.checkBox_3.setChecked(False)
+    ui.checkBox_4.setChecked(False)
+    ui.checkBox_5.setChecked(False)
+    ui.checkBox_6.setChecked(False)
+
+
+def back_to_ijadm2(ui):
+    ui.stackedWidget.setCurrentIndex(4)
+    global chosen_config
+    if ui.checkBox.isChecked():
+        chosen_config = 1
+    if ui.checkBox_2.isChecked():
+        chosen_config = 2
+    if ui.checkBox_3.isChecked():
+        chosen_config = 3
+    if ui.checkBox_4.isChecked():
+        chosen_config = 4
+    if ui.checkBox_5.isChecked():
+        chosen_config = 5
+    if ui.checkBox_6.isChecked():
+        chosen_config = 6
+    print(chosen_config)
 
 
 def back_to_taghir_moshakhasat(ui):
-    ui.stackedWidget.setCurrentIndex(4)
-
-
-def back_to_moshahede_gheimat(ui):
     ui.stackedWidget.setCurrentIndex(5)
 
 
-def back_to_snapshot(ui):
+def back_to_moshahede_gheimat(ui):
     ui.stackedWidget.setCurrentIndex(6)
 
 
-def back_to_send_ticket(ui):
+def back_to_snapshot(ui):
     ui.stackedWidget.setCurrentIndex(7)
 
 
-def back_to_ticket_answer(ui):
+def back_to_send_ticket(ui):
     ui.stackedWidget.setCurrentIndex(8)
 
 
-def back_to_list_gozaresh(ui):
+def back_to_ticket_answer(ui):
     ui.stackedWidget.setCurrentIndex(9)
 
 
-def list_of_gozaresh(ui):
+def back_to_list_gozaresh(ui):
     ui.stackedWidget.setCurrentIndex(10)
+
+
+def list_of_gozaresh(ui):
+    ui.stackedWidget.setCurrentIndex(11)
 
 
 def add_balance(ui):
@@ -261,6 +287,14 @@ if __name__ == "__main__":
     ui.pushButton_61.clicked.connect(partial(back_to_ijadm, ui))
     ui.pushButton_70.clicked.connect(partial(back_to_ijadm, ui))
     ui.pushButton_68.clicked.connect(partial(back_to_ijadm, ui))
+
+    ui.checkBox.stateChanged.connect(partial(back_to_ijadm, ui))
+    ui.checkBox_2.stateChanged.connect(partial(back_to_ijadm2, ui))
+    ui.checkBox_3.stateChanged.connect(partial(back_to_ijadm2, ui))
+    ui.checkBox_4.stateChanged.connect(partial(back_to_ijadm2, ui))
+    ui.checkBox_5.stateChanged.connect(partial(back_to_ijadm2, ui))
+    ui.checkBox_6.stateChanged.connect(partial(back_to_ijadm2, ui))
+    ui.back_to_manba.clicked.connect(partial(back_to_ijadm, ui))
 
     # connect taghir button
     ui.taghir_btn1.clicked.connect(partial(back_to_taghir_moshakhasat, ui))
