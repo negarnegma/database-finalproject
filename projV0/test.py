@@ -3,6 +3,8 @@ from random import randint
 import psycopg2
 import hashlib
 import uuid
+
+from resources.Offered import Offered
 from ticket import ticket_crud
 from functools import partial
 from PyQt5 import QtWidgets, QtGui
@@ -11,7 +13,7 @@ import hg
 from tkinter import *
 from user import user_crud
 from resources import snapshot_crud
-import database as db
+import database.database as db
 
 id1 = 8
 con = psycopg2.connect(database="projV0", user="postgres", password="12", host="127.0.0.1", port="5432")
@@ -22,61 +24,66 @@ current_user_id = 0
 
 chosen_config = 0
 
+offered_configs = [
+    Offered(0, "FreeBSD", "2", "3", "6", "20", "4"),
+    Offered(0, "FreeBSD", "10", "4", "8", "25", "9"),
+    Offered(0, "win7", "4", "2", "5", "10", "6"),
+    Offered(0, "win7", "16", "2", "5", "30", "7"),
+    Offered(0, "Ubuntu", "8", "3", "6", "15", "7"),
+    Offered(0, "Ubuntu", "12", "2", "7", "35", "12")
+]
+
 
 def set_labels(ui):
+    global offered_configs
+    db.insert_primery_data_offered_config(offered_configs)
     # resource 1
-    ui.label_239.setText("FreeBSD")
-    ui.label_241.setText("2")
-    ui.label_238.setText("3")
-    ui.label_240.setText("6")
-    ui.label_242.setText("20")
-    ui.label_243.setText("4")
-    ui.label_158.setText("142,000")
+    ui.label_239.setText(offered_configs[0].os)
+    ui.label_241.setText(offered_configs[0].ram)
+    ui.label_238.setText(offered_configs[0].cores)
+    ui.label_240.setText(offered_configs[0].cpu_freq)
+    ui.label_242.setText(offered_configs[0].disk)
+    ui.label_243.setText(offered_configs[0].bound_rate)
 
     # resource 2
-    ui.label_246.setText("FreeBSD")
-    ui.label_247.setText("10")
-    ui.label_244.setText("4")
-    ui.label_248.setText("8")
-    ui.label_245.setText("25")
-    ui.label_249.setText("9")
-    ui.label_160.setText("259,000")
+    ui.label_246.setText(offered_configs[1].os)
+    ui.label_247.setText(offered_configs[1].ram)
+    ui.label_244.setText(offered_configs[1].cores)
+    ui.label_248.setText(offered_configs[1].cpu_freq)
+    ui.label_245.setText(offered_configs[1].disk)
+    ui.label_249.setText(offered_configs[1].bound_rate)
 
     # resource 3
-    ui.label_258.setText("win7")
-    ui.label_259.setText("4")
-    ui.label_256.setText("2")
-    ui.label_260.setText("5")
-    ui.label_257.setText("10")
-    ui.label_261.setText("6")
-    ui.label_162.setText("92,000")
+    ui.label_258.setText(offered_configs[2].os)
+    ui.label_259.setText(offered_configs[2].ram)
+    ui.label_256.setText(offered_configs[2].cores)
+    ui.label_260.setText(offered_configs[2].cpu_freq)
+    ui.label_257.setText(offered_configs[2].disk)
+    ui.label_261.setText(offered_configs[2].bound_rate)
 
     # resource 4
-    ui.label_252.setText("win7")
-    ui.label_253.setText("16")
-    ui.label_250.setText("2")
-    ui.label_254.setText("5")
-    ui.label_251.setText("30")
-    ui.label_255.setText("7")
-    ui.label_164.setText("179,000")
+    ui.label_252.setText(offered_configs[3].os)
+    ui.label_253.setText(offered_configs[3].ram)
+    ui.label_250.setText(offered_configs[3].cores)
+    ui.label_254.setText(offered_configs[3].cpu_freq)
+    ui.label_251.setText(offered_configs[3].disk)
+    ui.label_255.setText(offered_configs[3].bound_rate)
 
     # resource 5
-    ui.label_264.setText("Linux")
-    ui.label_265.setText("8")
-    ui.label_262.setText("3")
-    ui.label_266.setText("6")
-    ui.label_263.setText("15")
-    ui.label_267.setText("7")
-    ui.label_166.setText("159,000")
+    ui.label_264.setText(offered_configs[4].os)
+    ui.label_265.setText(offered_configs[4].ram)
+    ui.label_262.setText(offered_configs[4].cores)
+    ui.label_266.setText(offered_configs[4].cpu_freq)
+    ui.label_263.setText(offered_configs[4].disk)
+    ui.label_267.setText(offered_configs[4].bound_rate)
 
     # resource 6
-    ui.label_270.setText("Linux")
-    ui.label_271.setText("12")
-    ui.label_268.setText("2")
-    ui.label_272.setText("7")
-    ui.label_269.setText("35")
-    ui.label_273.setText("12")
-    ui.label_168.setText("200,000")
+    ui.label_270.setText(offered_configs[5].os)
+    ui.label_271.setText(offered_configs[5].ram)
+    ui.label_268.setText(offered_configs[5].cores)
+    ui.label_272.setText(offered_configs[5].cpu_freq)
+    ui.label_269.setText(offered_configs[5].disk)
+    ui.label_273.setText(offered_configs[5].bound_rate)
 
     ui.label_22.setText("0")
     ui.label_23.setText("0")
@@ -120,6 +127,13 @@ def back_to_ijadm2(ui):
     if ui.checkBox_6.isChecked():
         chosen_config = 6
     print(chosen_config)
+
+    ui.os_in2_2.setText(offered_configs[chosen_config - 1].os)
+    ui.core_in2_2.setText(offered_configs[chosen_config - 1].cores)
+    ui.storage_in2_2.setText(offered_configs[chosen_config - 1].disk)
+    ui.frequency_in2_2.setText(offered_configs[chosen_config - 1].cpu_freq)
+    ui.bandwidth_in2_2.setText(offered_configs[chosen_config - 1].bound_rate)
+    ui.ram_in2_2.setText(offered_configs[chosen_config - 1].ram)
 
 
 def back_to_taghir_moshakhasat(ui):
@@ -288,7 +302,7 @@ if __name__ == "__main__":
     ui.pushButton_70.clicked.connect(partial(back_to_ijadm, ui))
     ui.pushButton_68.clicked.connect(partial(back_to_ijadm, ui))
 
-    ui.checkBox.stateChanged.connect(partial(back_to_ijadm, ui))
+    ui.checkBox.stateChanged.connect(partial(back_to_ijadm2, ui))
     ui.checkBox_2.stateChanged.connect(partial(back_to_ijadm2, ui))
     ui.checkBox_3.stateChanged.connect(partial(back_to_ijadm2, ui))
     ui.checkBox_4.stateChanged.connect(partial(back_to_ijadm2, ui))
