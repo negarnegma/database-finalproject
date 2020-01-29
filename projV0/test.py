@@ -1,7 +1,7 @@
 import psycopg2
 import hashlib
 import uuid
-import ticket_crud
+from ticket import ticket_crud
 from functools import partial
 from PyQt5 import QtWidgets
 import grafic7
