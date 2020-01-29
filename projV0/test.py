@@ -4,6 +4,8 @@ import psycopg2
 import hashlib
 import uuid
 
+from PyQt5.QtWidgets import QMessageBox
+
 from resources.Offered import Offered
 from ticket import ticket_crud
 from functools import partial
@@ -12,7 +14,7 @@ import grafic7
 import hg
 from tkinter import *
 from user import user_crud
-from resources import snapshot_crud
+from resources import snapshot_crud, resources_crud, Ordered
 import database.database as db
 
 id1 = 8
@@ -208,6 +210,36 @@ def get_snapshots(ui):
     snapshot_crud.get_snapshots(ui.userconfigId.toPlainText())
 
 
+def create_u_conf(ui):
+    try:
+        global current_user_id
+        global offered_configs
+        global chosen_config
+        resources_crud.add_user_resource(current_user_id, Ordered.Ordered(
+            0, offered_configs[chosen_config - 1].os,
+            offered_configs[chosen_config - 1].ram,
+            offered_configs[chosen_config - 1].cores,
+            offered_configs[chosen_config - 1].disk,
+            offered_configs[chosen_config - 1].cpu_freq,
+            offered_configs[chosen_config - 1].bound_rate,
+            None,
+            current_user_id, 0,
+            offered_configs[chosen_config - 1].offered_id
+        ))
+
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+
+        msg.setText("منبع ایجاد شد!")
+        msg.setWindowTitle("موفقیت")
+        msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+
+        retval = msg.exec_()
+
+    except Exception as e:
+        ui.bandwidth_in2_2.setText(str(e))
+
+
 def login_btn_clicked(ui):
     try:
         if user_crud.login_user(ui.name_in1.toPlainText(), ui.password_in1.toPlainText()):
@@ -309,6 +341,7 @@ if __name__ == "__main__":
     ui.checkBox_5.stateChanged.connect(partial(back_to_ijadm2, ui))
     ui.checkBox_6.stateChanged.connect(partial(back_to_ijadm2, ui))
     ui.back_to_manba.clicked.connect(partial(back_to_ijadm, ui))
+    ui.create_u_conf.clicked.connect(partial(create_u_conf, ui))
 
     # connect taghir button
     ui.taghir_btn1.clicked.connect(partial(back_to_taghir_moshakhasat, ui))
