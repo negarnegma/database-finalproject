@@ -150,7 +150,7 @@ def add_ticket(ui):
 
 def answer_ticket(ui):
     global current_user_id
-    ticket_crud.answer_ticket(current_user_id, "answer", 1)
+    ticket_crud.answer_ticket(current_user_id, ui.answer_text.toPlainText(), ui.textEdit_6.toPlainText())
 
 
 def login_btn_clicked(ui):
@@ -306,6 +306,7 @@ if __name__ == "__main__":
     ui.pushButton_2.clicked.connect(partial(get_all_answers_for_a_ticket,
                                             ui))  # moshahede all answers for tickets
     ui.pushButton_5.clicked.connect(partial(add_ticket, ui))  # send ticket
+    ui.answer.clicked.connect(partial(answer_ticket, ui))  # send ticket
     ui.pushButton_7.clicked.connect(partial(back_to_ticket_answer, ui))  # go to answer ticket page
 
     sys.exit(app.exec_())

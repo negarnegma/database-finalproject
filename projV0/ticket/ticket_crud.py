@@ -19,15 +19,19 @@ def add_ticket(user_id, content):
     con.close()
 
 
-def answer_ticket(user_id, answer, last_ticket):
+def answer_ticket(user_id, answer, last_ticket_id):
     # if not (user_crud.is_admin(user_id)):
     #     raise Exception('access denied')
     con = db.get_connection_func()
     cur = con.cursor()
+    # cur.execute("insert into ticket(owner_id, content, c_date,  status, first_ticket_id, \"order\")"
+    #             " values (%s, %s, %s, %s, %s, %s)",
+    #             (user_id, answer, psycopg2.TimestampFromTicks(time.time()), 1, last_ticket.first_ticket_id,
+    #              last_ticket.order + 1))
     cur.execute("insert into ticket(owner_id, content, c_date,  status, first_ticket_id, \"order\")"
                 " values (%s, %s, %s, %s, %s, %s)",
-                (user_id, answer, psycopg2.TimestampFromTicks(time.time()), 1, last_ticket.first_ticket_id,
-                 last_ticket.order + 1))
+                (user_id, answer, psycopg2.TimestampFromTicks(time.time()), 1, last_ticket_id,
+                  1))
 
     con.commit()
     con.close()
@@ -53,9 +57,9 @@ def get_all_user_tickets(ui, user_id):
     con.close()
     # print all_user_tickets
     ui.textEdit_5.setText("")
-    ui.textEdit_5.insertPlainText("  id   date                 content")
+    ui.textEdit_5.insertPlainText("  id   date                   content")
     for ticket in tickets:
-        ui.textEdit_5.insertPlainText("\n  %2.2s   %21.21s%s" %
+        ui.textEdit_5.insertPlainText("\n  %2.2s   %21.21s  %s" %
                                       (ticket.ticket_id, ticket.c_date, ticket.content))
     # else:
     #     ui.textEdit_5.setText("")
@@ -101,9 +105,9 @@ def get_all_answers_for_a_ticket(ui, user_id, ticket_id):
 
     # print all_answers_for_a_ticket
     ui.textEdit_4.setText("")
-    ui.textEdit_4.insertPlainText("  id   date                 content")
+    ui.textEdit_4.insertPlainText("  id   date                   content")
     for ticket in tickets:
-        ui.textEdit_4.insertPlainText("\n  %2.2s   %21.21s%s" %
+        ui.textEdit_4.insertPlainText("\n  %2.2s   %21.21s  %s" %
                                       (ticket.ticket_id, ticket.c_date, ticket.content))
     # else:
     #     ui.textEdit_4.setText("")
