@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'grafic.ui'
 #
-# Created by: PyQt5 UI code generator 5.14.0
+# Created by: PyQt5 UI code generator 5.14.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -1342,7 +1342,7 @@ class Ui_t(object):
         self.textEdit.setGeometry(QtCore.QRect(90, 160, 521, 171))
         self.textEdit.setObjectName("textEdit")
         self.pushButton_7 = QtWidgets.QPushButton(self.page_8)
-        self.pushButton_7.setGeometry(QtCore.QRect(110, 420, 211, 51))
+        self.pushButton_7.setGeometry(QtCore.QRect(260, 420, 171, 51))
         font = QtGui.QFont()
         font.setPointSize(9)
         font.setBold(True)
@@ -1362,15 +1362,6 @@ class Ui_t(object):
         font.setPointSize(11)
         self.label_173.setFont(font)
         self.label_173.setObjectName("label_173")
-        self.pushButton = QtWidgets.QPushButton(self.page_8)
-        self.pushButton.setGeometry(QtCore.QRect(380, 420, 201, 51))
-        font = QtGui.QFont()
-        font.setPointSize(9)
-        font.setBold(True)
-        font.setWeight(75)
-        self.pushButton.setFont(font)
-        self.pushButton.setStyleSheet("background-color: rgb(85, 255, 255);")
-        self.pushButton.setObjectName("pushButton")
         self.label_172 = QtWidgets.QLabel(self.page_8)
         self.label_172.setGeometry(QtCore.QRect(530, 50, 71, 21))
         font = QtGui.QFont()
@@ -1491,7 +1482,7 @@ class Ui_t(object):
         self.line_19.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_19.setObjectName("line_19")
         self.pushButton_6 = QtWidgets.QPushButton(self.page_3)
-        self.pushButton_6.setGeometry(QtCore.QRect(340, 400, 271, 28))
+        self.pushButton_6.setGeometry(QtCore.QRect(200, 400, 291, 28))
         font = QtGui.QFont()
         font.setPointSize(9)
         font.setBold(True)
@@ -1748,7 +1739,7 @@ class Ui_t(object):
         self.stackedWidget.addWidget(self.page_10)
         t.setCentralWidget(self.centralWidget)
         self.menuBar = QtWidgets.QMenuBar(t)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 936, 26))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 936, 21))
         self.menuBar.setObjectName("menuBar")
         t.setMenuBar(self.menuBar)
         self.mainToolBar = QtWidgets.QToolBar(t)
@@ -1759,7 +1750,7 @@ class Ui_t(object):
         t.setStatusBar(self.statusBar)
 
         self.retranslateUi(t)
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(7)
         QtCore.QMetaObject.connectSlotsByName(t)
 
     def retranslateUi(self, t):
@@ -1951,7 +1942,6 @@ class Ui_t(object):
         self.pushButton_60.setText(_translate("t", "مشاهده قیمت منابع"))
         self.pushButton_7.setText(_translate("t", "مشاهده ی وضعیت تیکت ها"))
         self.label_173.setText(_translate("t", "مشکل خود را شرح دهید"))
-        self.pushButton.setText(_translate("t", "مشاهده ی پاسخ تیکت"))
         self.label_172.setText(_translate("t", "تیکت"))
         self.pushButton_5.setText(_translate("t", "ارسال تیکت"))
         self.sabtenam_btn3_13.setText(_translate("t", "ثبت نام"))
@@ -1965,7 +1955,7 @@ class Ui_t(object):
         self.pushButton_90.setText(_translate("t", "تغییر مشخصات منبع"))
         self.label_21.setText(_translate("t", "شماره تیکت را وارد کنید :"))
         self.pushButton_2.setText(_translate("t", "مشاهده ی همه پاسخ های این تیکت"))
-        self.pushButton_6.setText(_translate("t", "مشاهده ی همه تیکت های یک کاربر"))
+        self.pushButton_6.setText(_translate("t", "مشاهده ی همه تیکت های ارسال شده ی شما"))
         self.sabtenam_btn3_9.setText(_translate("t", "ثبت نام"))
         self.pushButton_61.setText(_translate("t", "ایجاد منبع"))
         self.pushButton_62.setText(_translate("t", "تغییر مشخصات منبع"))
@@ -1996,4 +1986,3 @@ class Ui_t(object):
         self.wallet_btn_10.setText(_translate("t", "کیف پول"))
         self.sabtenam_btn3_10.setText(_translate("t", "ثبت نام"))
         self.label_182.setText(_translate("t", "گزارش مربوطه"))
-

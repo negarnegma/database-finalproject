@@ -133,6 +133,26 @@ def get_balance(ui):
     ui.label_22.setText(str(balance))
 
 
+def get_all_user_tickets(ui):
+    global current_user_id
+    ticket_crud.get_all_user_tickets(ui, current_user_id)
+
+
+def get_all_answers_for_a_ticket(ui):
+    global current_user_id
+    ticket_crud.get_all_answers_for_a_ticket(ui, current_user_id, ui.textEdit_6.toPlainText())
+
+
+def add_ticket(ui):
+    global current_user_id
+    ticket_crud.add_ticket(current_user_id, ui.textEdit.toPlainText())
+
+
+def answer_ticket(ui):
+    global current_user_id
+    ticket_crud.answer_ticket(current_user_id, "answer", 1)
+
+
 def login_btn_clicked(ui):
     try:
         if user_crud.login_user(ui.name_in1.toPlainText(), ui.password_in1.toPlainText()):
@@ -202,15 +222,18 @@ if __name__ == "__main__":
     ui.sabtenam_btn3_8.clicked.connect(partial(back_to_sabtenam, ui))
     ui.sabtenam_btn3_9.clicked.connect(partial(back_to_sabtenam, ui))
     ui.sabtenam_btn3_10.clicked.connect(partial(back_to_sabtenam, ui))
+    ui.sabtenam_btn3_13.clicked.connect(partial(back_to_sabtenam, ui))
 
     # connect wallet buttons
     ui.wallet_btn1.clicked.connect(partial(get_balance, ui))  # mojodi ra namayesh bede
-    ui.afzayesh_mojodi_btn.clicked.connect(partial(add_balance, ui))  # afzayesh mojodi  از این جا هیچ وقت نمایش نمیده!! چرا؟! مهم نیست حالا جای دیگه نمایش میدیم
+    ui.afzayesh_mojodi_btn.clicked.connect(partial(add_balance,
+                                                   ui))  # afzayesh mojodi  از این جا هیچ وقت نمایش نمیده!! چرا؟! مهم نیست حالا جای دیگه نمایش میدیم
     ui.wallet_btn2.clicked.connect(partial(back_to_wallet, ui))
     ui.wallet_btn_12.clicked.connect(partial(back_to_wallet, ui))
     ui.wallet_btn_11.clicked.connect(partial(back_to_wallet, ui))
     ui.wallet_btn_7.clicked.connect(partial(back_to_wallet, ui))
     ui.wallet_btn_8.clicked.connect(partial(back_to_wallet, ui))
+    ui.wallet_btn_13.clicked.connect(partial(back_to_wallet, ui))
     ui.pushButton_65.clicked.connect(partial(back_to_wallet, ui))
 
     # connect ijad button
@@ -222,6 +245,7 @@ if __name__ == "__main__":
     ui.pushButton_59.clicked.connect(partial(back_to_ijadm, ui))
     ui.pushButton_61.clicked.connect(partial(back_to_ijadm, ui))
     ui.pushButton_70.clicked.connect(partial(back_to_ijadm, ui))
+    ui.pushButton_68.clicked.connect(partial(back_to_ijadm, ui))
 
     # connect taghir button
     ui.taghir_btn1.clicked.connect(partial(back_to_taghir_moshakhasat, ui))
@@ -242,6 +266,7 @@ if __name__ == "__main__":
     ui.pushButton_60.clicked.connect(partial(back_to_moshahede_gheimat, ui))
     ui.pushButton_66.clicked.connect(partial(back_to_moshahede_gheimat, ui))
     ui.pushButton_68.clicked.connect(partial(back_to_moshahede_gheimat, ui))
+    ui.pushButton_89.clicked.connect(partial(back_to_moshahede_gheimat, ui))
 
     # connect snapshot button
     ui.snap_btn1.clicked.connect(partial(back_to_snapshot, ui))
@@ -253,6 +278,7 @@ if __name__ == "__main__":
     ui.pushButton_55.clicked.connect(partial(back_to_snapshot, ui))
     ui.pushButton_64.clicked.connect(partial(back_to_snapshot, ui))
     ui.pushButton_71.clicked.connect(partial(back_to_snapshot, ui))
+    ui.pushButton_87.clicked.connect(partial(back_to_snapshot, ui))
 
     # connect ticket button
     ui.ticket_btn1.clicked.connect(partial(back_to_send_ticket, ui))
@@ -273,16 +299,13 @@ if __name__ == "__main__":
     ui.pushButton_56.clicked.connect(partial(back_to_list_gozaresh, ui))
     ui.pushButton_65.clicked.connect(partial(back_to_list_gozaresh, ui))
     ui.pushButton_69.clicked.connect(partial(back_to_list_gozaresh, ui))
-
-    ticket_id = ui.textEdit_6.toPlainText()
-    question = ui.textEdit.toPlainText()
+    ui.pushButton_88.clicked.connect(partial(back_to_list_gozaresh, ui))
 
     ui.pushButton_6.clicked.connect(
-        partial(ticket_crud.get_all_user_tickets, (ui, ui.name_in1)))  # moshahede all tickets
-    ui.pushButton_2.clicked.connect(partial(ticket_crud.get_all_answers_for_a_ticket,
-                                            (ui, ui.name_in1, ticket_id)))  # moshahede all answers for tickets
-    ui.pushButton_5.clicked.connect(partial(ticket_crud.add_ticket, (ui.name_in1, question)))  # send ticket
-    # ui.pushButton.clicked(partial(ticket_crud.answer_ticket())) # see ticket answer
+        partial(get_all_user_tickets, ui))  # moshahede all tickets
+    ui.pushButton_2.clicked.connect(partial(get_all_answers_for_a_ticket,
+                                            ui))  # moshahede all answers for tickets
+    ui.pushButton_5.clicked.connect(partial(add_ticket, ui))  # send ticket
     ui.pushButton_7.clicked.connect(partial(back_to_ticket_answer, ui))  # go to answer ticket page
 
     sys.exit(app.exec_())

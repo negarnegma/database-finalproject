@@ -32,7 +32,7 @@ background-color: rgb(85, 255, 255);
 background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>7</number>
     </property>
     <widget class="QWidget" name="loginpage">
      <widget class="QWidget" name="widget" native="true">
@@ -4015,9 +4015,9 @@ background-color: rgb(85, 255, 255);</string>
      <widget class="QPushButton" name="pushButton_7">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>260</x>
         <y>420</y>
-        <width>211</width>
+        <width>171</width>
         <height>51</height>
        </rect>
       </property>
@@ -4067,29 +4067,6 @@ background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="text">
        <string>مشکل خود را شرح دهید</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton">
-      <property name="geometry">
-       <rect>
-        <x>380</x>
-        <y>420</y>
-        <width>201</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>9</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(85, 255, 255);</string>
-      </property>
-      <property name="text">
-       <string>مشاهده ی پاسخ تیکت</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_172">
@@ -4429,9 +4406,9 @@ background-color: rgb(85, 255, 255);</string>
      <widget class="QPushButton" name="pushButton_6">
       <property name="geometry">
        <rect>
-        <x>340</x>
+        <x>200</x>
         <y>400</y>
-        <width>271</width>
+        <width>291</width>
         <height>28</height>
        </rect>
       </property>
@@ -4446,7 +4423,7 @@ background-color: rgb(85, 255, 255);</string>
        <string notr="true">background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="text">
-       <string>مشاهده ی همه تیکت های یک کاربر</string>
+       <string>مشاهده ی همه تیکت های ارسال شده ی شما</string>
       </property>
      </widget>
      <widget class="Line" name="line_20">
@@ -5150,7 +5127,7 @@ background-color: rgb(85, 255, 255);</string>
      <x>0</x>
      <y>0</y>
      <width>936</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
