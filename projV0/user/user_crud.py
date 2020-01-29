@@ -25,6 +25,7 @@ def get_balance(user_id):
     con.close()
     return row[0]
 
+
 # ############register and login####################
 def register_user(nasional_number, fullname, address, password):
     salt = uuid.uuid4().hex
@@ -72,6 +73,18 @@ def get_all_users(size, page):
     con.close()
 
     return users
+
+
+def get_user_id(nasional_number):
+    con = db.get_connection_func()
+    cur = con.cursor()
+    cur.execute("SELECT id from \"user\" where nasional_number = %s", (nasional_number,))
+    row = cur.fetchone()
+    con.close()
+    if row:
+        return row[0]
+    else:
+        return 0
 
 
 def is_admin(user_id):

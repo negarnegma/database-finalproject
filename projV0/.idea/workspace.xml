@@ -4,6 +4,7 @@
     <list default="true" id="8117a873-76a9-4aea-bff3-bc6aaa216c17" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/user_crud.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/user_crud.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,20 +48,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/user/user_crud.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="30" selection-start-line="30" selection-end-line="30" />
+            <state relative-caret-position="140">
+              <caret line="80" column="89" lean-forward="true" selection-start-line="80" selection-start-column="89" selection-end-line="80" selection-end-column="89" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="129" column="32" selection-start-line="129" selection-start-column="32" selection-end-line="129" selection-end-column="32" />
+            <state relative-caret-position="85">
+              <caret line="128" selection-start-line="128" selection-end-line="128" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -130,6 +131,7 @@
       <find>ثب</find>
       <find>QtCore.QRect(350, 390, 93, 41)</find>
       <find>name_i</find>
+      <find>login</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -146,7 +148,6 @@
         <option value="$PROJECT_DIR$/resources/offered_config.py" />
         <option value="$PROJECT_DIR$/resources/offered.py" />
         <option value="$PROJECT_DIR$/resources/ssh.py" />
-        <option value="$PROJECT_DIR$/user/user_crud.py" />
         <option value="$PROJECT_DIR$/ticket/ticket.py" />
         <option value="$PROJECT_DIR$/resources/snapshot_crud.py" />
         <option value="$PROJECT_DIR$/resources/ordered.py" />
@@ -157,6 +158,7 @@
         <option value="$PROJECT_DIR$/resources/resources_offered.py" />
         <option value="$PROJECT_DIR$/grafic.py" />
         <option value="$PROJECT_DIR$/grafic7.py" />
+        <option value="$PROJECT_DIR$/user/user_crud.py" />
         <option value="$PROJECT_DIR$/test.py" />
       </list>
     </option>
@@ -351,7 +353,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580281356826</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="register and login">
+      <created>1580283346291</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1580283346291</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -367,8 +376,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32668713" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32668713" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.398773" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -417,6 +426,22 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="register and login" />
     <option name="LAST_COMMIT_MESSAGE" value="register and login" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test.py</url>
+          <line>128</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/user/user_crud.py</url>
+          <line>78</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/main" />
@@ -530,13 +555,6 @@
     <entry file="file://$PROJECT_DIR$/resources/resources_offered.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/user/user_crud.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/Offered.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -560,11 +578,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="129" column="32" selection-start-line="129" selection-start-column="32" selection-end-line="129" selection-end-column="32" />
+        <state relative-caret-position="85">
+          <caret line="128" selection-start-line="128" selection-end-line="128" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/user_crud.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="80" column="89" lean-forward="true" selection-start-line="80" selection-start-column="89" selection-end-line="80" selection-end-column="89" />
         </state>
       </provider>
     </entry>

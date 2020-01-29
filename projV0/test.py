@@ -15,6 +15,8 @@ con = psycopg2.connect(database="projV0", user="postgres", password="12", host="
 # cursor
 cur = con.cursor()
 
+current_user_id = 0
+
 
 def set_labels(ui):
     # resource 1
@@ -120,19 +122,22 @@ def list_of_gozaresh(ui):
 
 
 def login_btn_clicked(ui):
-    if user_crud.login_user(ui.name_in1.toPlainText(), ui.password_in1.toPlainText()):
-        ui.stackedWidget.setCurrentIndex(2)
-    else:
-        try:
+    try:
 
+        if user_crud.login_user(ui.name_in1.toPlainText(), ui.password_in1.toPlainText()):
+            global current_user_id
+            current_user_id = user_crud.get_user_id(ui.name_in1.toPlainText())
+            print(current_user_id)
+            ui.stackedWidget.setCurrentIndex(2)
+        else:
             ui.name_in1.setText("wrong")
             ui.password_in1.setText("wrong")
             cursor = ui.name_in1.textCursor()
             cursor.setPosition(0)
             cursor.setPosition(5, QtGui.QTextCursor.KeepAnchor)
             ui.name_in1.setTextCursor(cursor)
-        except Exception as e:
-            print(e)
+    except Exception as e:
+        print(e)
 
 
 def sabtenam_btn_clicked1(ui):
