@@ -277,10 +277,46 @@ def get_snapshots(ui):
         msg.exec_()
 
 
-def get_user_confs(ui):
+def get_user_conf_info(ui):
     try:
         global current_user_id
-        resources_crud.get_user_resources(current_user_id)
+        u_conf = resources_crud.get_user_resource_info(current_user_id, ui.manbaIds.currentText())
+
+        ui.os_in2.setText(u_conf.os)
+        ui.core_in2.setText(str(u_conf.cores))
+        ui.storage_in2.setText(str(u_conf.disk))
+        ui.frequency_in2.setText(str(u_conf.cpu_freq))
+        ui.bandwidth_in2.setText(str(u_conf.bound_rate))
+        ui.ram_in2.setText(str(u_conf.ram))
+        ui.sshkey_in2_2.setText(str(u_conf.ssh_id))
+        ui.offeredId_in2_2.setText(str(u_conf.offered_config_id))
+
+    except Exception as e:
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Warning)
+        msg.setText(str(e))
+        msg.setWindowTitle("Err..")
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.exec_()
+
+
+def update_user_conf_info(ui):
+    try:
+        global current_user_id
+        resources_crud.update_user_resource(current_user_id, ui.manbaIds.currentText(), Ordered.Ordered(
+            ui.manbaIds.currentText(),
+            ui.os_in2.toPlainText(),
+            float(ui.ram_in2.toPlainText()),
+            float(ui.core_in2.toPlainText()),
+            float(ui.storage_in2.toPlainText()),
+            float(ui.frequency_in2.toPlainText()),
+            float(ui.bandwidth_in2.toPlainText()),
+            ui.sshkey_in2_2.toPlainText(),
+            float(current_user_id),
+            0,
+            int(ui.offeredId_in2_2.toPlainText())
+        ))
+
     except Exception as e:
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Warning)
@@ -432,6 +468,8 @@ if __name__ == "__main__":
     ui.pushButton_58.clicked.connect(partial(back_to_taghir_moshakhasat, ui))
     ui.pushButton_69.clicked.connect(partial(back_to_taghir_moshakhasat, ui))
     ui.pushButton_67.clicked.connect(partial(back_to_taghir_moshakhasat, ui))
+    ui.manbaIds.currentTextChanged.connect(partial(get_user_conf_info, ui))
+    ui.pushButton_3.clicked.connect(partial(update_user_conf_info, ui))
 
     # connect price button
     ui.price_btn1.clicked.connect(partial(back_to_moshahede_gheimat, ui))

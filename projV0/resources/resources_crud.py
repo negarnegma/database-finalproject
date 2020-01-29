@@ -40,15 +40,14 @@ def get_offered_resources():
 
 
 def update_offered_resource(user_id, offered_id, new_offered):
-
     if not (user_crud.is_admin(user_id)):
         raise Exception('access denied')
 
     con = db.get_connection_func()
     cur = con.cursor()
     cur.execute(
-        "update offered_config set os = %s , set ram = %s , set cores = %s , "
-        "set disk = %s , set cpu_freq = %s , set bound_rate = %s "
+        "update offered_config set os = %s ,  ram = %s ,  cores = %s , "
+        " disk = %s ,  cpu_freq = %s ,  bound_rate = %s "
         "where id = %s ",
         (new_offered.os, new_offered.ram, new_offered.cores,
          new_offered.disk, new_offered.cpu_freq, new_offered.bound_rate,
@@ -96,13 +95,31 @@ def get_user_resources(user_id):
     return ordered
 
 
+def get_user_resource_info(user_id, ordered_id):
+    con = db.get_connection_func()
+    cur = con.cursor()
+    cur.execute(
+        "select id, os, ram, cores, disk, cpu_freq, bound_rate,"
+        " ssh_id, owner_id, daily_cost, offered_config_id"
+        " from user_config "
+        " where owner_id = %s and id = %s ",
+        (user_id, ordered_id))
+
+    row = cur.fetchone()
+    p1 = Ordered(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10])
+
+    con.close()
+
+    return p1
+
+
 def update_user_resource(user_id, ordered_id, new_ordered):
     con = db.get_connection_func()
     cur = con.cursor()
     cur.execute(
-        "update user_config set os = %s , set ram = %s , set cores = %s , "
-        "set disk = %s , set cpu_freq = %s , set bound_rate = %s ,"
-        " set ssh_id = %s , set offered_config_id = %s"
+        "update user_config set os = %s ,  ram = %s ,  cores = %s , "
+        " disk = %s ,  cpu_freq = %s ,  bound_rate = %s ,"
+        "  ssh_id = %s ,  offered_config_id = %s"
         "where id = %s and owner_id = %s",
         (new_ordered.os, new_ordered.ram, new_ordered.cores,
          new_ordered.disk, new_ordered.cpu_freq, new_ordered.bound_rate,
