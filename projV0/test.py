@@ -93,15 +93,33 @@ def set_labels(ui):
 
 
 def send_ssh(ui):
-    user_id = ui.name_in1.toPlainText()
-    ssh_name = ui.textEdit_7.toPlainText()
-    ssh_content = ui.textEdit_8.toPlainText()
-    ssh = SSH(0,ssh_name,ssh_content)
-    resources_crud.add_ssh(user_id,ssh)
+    try:
+        user_id = ui.name_in1.toPlainText()
+        ssh_name = ui.textEdit_7.toPlainText()
+        ssh_content = ui.textEdit_8.toPlainText()
+        ssh = SSH(0, ssh_name, ssh_content)
+        resources_crud.add_ssh(user_id, ssh)
+    except Exception as e:
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Warning)
+        msg.setText(str(e))
+        msg.setWindowTitle("Err..")
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.exec_()
+
 
 def print_all_user_ssh(ui):
-    user_id = ui.name_in1.toPlainText()
-    resources_crud.get_all_ssh(ui,user_id)
+    try:
+        user_id = ui.name_in1.toPlainText()
+        resources_crud.get_all_ssh(ui, user_id)
+    except Exception as e:
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Warning)
+        msg.setText(str(e))
+        msg.setWindowTitle("Err..")
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.exec_()
+
 
 def back_to_login(ui):
     ui.stackedWidget.setCurrentIndex(0)
@@ -150,7 +168,7 @@ def back_to_ijadm2(ui):
         ui.bandwidth_in2_2.setText(offered_configs[chosen_config - 1].bound_rate)
         ui.ram_in2_2.setText(offered_configs[chosen_config - 1].ram)
 
-        sshHa = resources_crud.get_all_ssh(current_user_id)
+        sshHa = resources_crud.get_all_ssh(ui, current_user_id)
         ui.create_u_c_ssh.clear()
         ui.create_u_c_ssh.addItem('None')
         for c in sshHa:
