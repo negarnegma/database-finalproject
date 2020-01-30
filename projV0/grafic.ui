@@ -521,7 +521,7 @@ background-color: rgb(85, 255, 255);</string>
         <string notr="true">background-color: rgb(85, 255, 255);</string>
        </property>
        <property name="text">
-        <string>مشاهده قیمت منابع</string>
+        <string>SSH key</string>
        </property>
       </widget>
       <widget class="QPushButton" name="login_btn4">
@@ -1868,14 +1868,14 @@ background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>9</pointsize>
+        <pointsize>10</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="text">
-       <string>مشاهده قیمت منابع</string>
+       <string>SSH key</string>
       </property>
      </widget>
      <widget class="QPushButton" name="sabtenam_btn4">
@@ -3055,14 +3055,14 @@ background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>9</pointsize>
+        <pointsize>10</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="text">
-       <string>مشاهده قیمت منابع</string>
+       <string>SSH key</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_80">
@@ -3695,7 +3695,9 @@ background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>9</pointsize>
+        <pointsize>10</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -3703,115 +3705,165 @@ background-color: rgb(85, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>مشاهده قیمت منابع</string>
+       <string>SSH key</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label">
+     <widget class="QGraphicsView" name="graphicsView_17">
       <property name="geometry">
        <rect>
-        <x>190</x>
-        <y>190</y>
-        <width>55</width>
-        <height>21</height>
+        <x>70</x>
+        <y>30</y>
+        <width>531</width>
+        <height>681</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_7">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>150</y>
+        <width>191</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_34">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>60</y>
+        <width>91</width>
+        <height>20</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>9</pointsize>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
-       <string>تومان</string>
+       <string>کلید SSH</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_42">
+     <widget class="QPushButton" name="pushButton">
       <property name="geometry">
        <rect>
-        <x>190</x>
-        <y>230</y>
-        <width>55</width>
-        <height>21</height>
+        <x>290</x>
+        <y>360</y>
+        <width>93</width>
+        <height>28</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>9</pointsize>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(85, 255, 255);</string>
+      </property>
       <property name="text">
-       <string>تومان</string>
+       <string>ثبت کلید</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_45">
+     <widget class="QTextEdit" name="textEdit_9">
       <property name="geometry">
        <rect>
-        <x>190</x>
-        <y>280</y>
-        <width>55</width>
-        <height>21</height>
+        <x>130</x>
+        <y>480</y>
+        <width>421</width>
+        <height>201</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_159">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>200</y>
+        <width>171</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>9</pointsize>
+        <pointsize>11</pointsize>
        </font>
       </property>
       <property name="text">
-       <string>تومان</string>
+       <string>مقدار آنرا انتخاب کنید</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_46">
+     <widget class="QLabel" name="label_157">
       <property name="geometry">
        <rect>
-        <x>190</x>
-        <y>330</y>
-        <width>55</width>
-        <height>21</height>
+        <x>337</x>
+        <y>150</y>
+        <width>221</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>9</pointsize>
+        <pointsize>11</pointsize>
        </font>
       </property>
       <property name="text">
-       <string>تومان</string>
+       <string>نام کلید SSH خود را وارد کنید</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_47">
+     <widget class="Line" name="line_13">
       <property name="geometry">
        <rect>
-        <x>190</x>
-        <y>390</y>
-        <width>55</width>
-        <height>21</height>
+        <x>130</x>
+        <y>100</y>
+        <width>421</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="lineWidth">
+       <number>2</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>420</y>
+        <width>291</width>
+        <height>28</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>9</pointsize>
+        <pointsize>10</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(85, 255, 255);</string>
+      </property>
       <property name="text">
-       <string>تومان</string>
+       <string>مشاهده ی لیست کلید های شما</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_51">
+     <widget class="QTextEdit" name="textEdit_8">
       <property name="geometry">
        <rect>
-        <x>190</x>
-        <y>430</y>
-        <width>55</width>
-        <height>21</height>
+        <x>130</x>
+        <y>250</y>
+        <width>421</width>
+        <height>91</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>9</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>تومان</string>
       </property>
      </widget>
     </widget>
@@ -3957,14 +4009,14 @@ background-color: rgb(255, 255, 255);</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>9</pointsize>
+        <pointsize>10</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="text">
-       <string>مشاهده قیمت منابع</string>
+       <string>SSH key</string>
       </property>
      </widget>
      <widget class="QPushButton" name="login_btn2_7">
@@ -4127,9 +4179,9 @@ background-color: rgb(85, 255, 255);</string>
      <widget class="QLabel" name="snapshot_size">
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>390</x>
         <y>170</y>
-        <width>61</width>
+        <width>21</width>
         <height>31</height>
        </rect>
       </property>
@@ -4362,14 +4414,14 @@ background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>9</pointsize>
+        <pointsize>10</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="text">
-       <string>مشاهده قیمت منابع</string>
+       <string>SSH key</string>
       </property>
      </widget>
      <widget class="QGraphicsView" name="graphicsView_22">
@@ -4676,14 +4728,14 @@ background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>9</pointsize>
+        <pointsize>10</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="text">
-       <string>مشاهده قیمت منابع</string>
+       <string>SSH key</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_90">
@@ -5066,14 +5118,14 @@ background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>9</pointsize>
+        <pointsize>10</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="text">
-       <string>مشاهده قیمت منابع</string>
+       <string>SSH key</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_175">
@@ -5363,7 +5415,7 @@ background-color: rgb(85, 255, 255);</string>
 background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="text">
-       <string>مدیریت منابع</string>
+       <string>تغییر مشخصات منبع</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_68">
@@ -5377,14 +5429,14 @@ background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>9</pointsize>
+        <pointsize>10</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="text">
-       <string>مشاهده قیمت منابع</string>
+       <string>SSH key</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_69">
@@ -5566,7 +5618,7 @@ background-color: rgb(85, 255, 255);</string>
      <x>0</x>
      <y>0</y>
      <width>936</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>

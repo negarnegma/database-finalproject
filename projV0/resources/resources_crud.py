@@ -40,6 +40,7 @@ def get_offered_resources():
 
 
 def update_offered_resource(user_id, offered_id, new_offered):
+
     if not (user_crud.is_admin(user_id)):
         raise Exception('access denied')
 
@@ -146,7 +147,7 @@ def add_ssh(user_id, ssh):
     con.close()
 
 
-def get_all_ssh(user_id):
+def get_all_ssh(ui,user_id):
     con = db.get_connection_func()
     cur = con.cursor()
     cur.execute("select id, name, content from ssh"
@@ -160,8 +161,10 @@ def get_all_ssh(user_id):
         sshs.append(p1)
 
     con.close()
-
-    return sshs
+    #ui.textEdit_9.insertPlainText("  id   name                   content")
+    for ssh in sshs:
+        ui.textEdit_9.insertPlainText("%s   %s"%ssh.ssh_id,ssh.name)
+    #return sshs
 
 
 # ######################################333

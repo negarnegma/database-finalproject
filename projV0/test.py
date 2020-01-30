@@ -3,16 +3,17 @@ from random import randint
 import psycopg2
 import hashlib
 import uuid
-
+from resources.SSH import SSH
 from PyQt5.QtWidgets import QMessageBox
-
 from resources.Offered import Offered
 from ticket import ticket_crud
+from resources import resources_crud
 from functools import partial
 from PyQt5 import QtWidgets, QtGui
-import grafic7
+import grafic12
 import hg
 from tkinter import *
+
 from user import user_crud
 from resources import snapshot_crud, resources_crud, Ordered
 import database.database as db
@@ -90,6 +91,17 @@ def set_labels(ui):
     ui.label_22.setText("0")
     ui.label_23.setText("0")
 
+
+def send_ssh(ui):
+    user_id = ui.name_in1.toPlainText()
+    ssh_name = ui.textEdit_7.toPlainText()
+    ssh_content = ui.textEdit_8.toPlainText()
+    ssh = SSH(0,ssh_name,ssh_content)
+    resources_crud.add_ssh(user_id,ssh)
+
+def print_all_user_ssh(ui):
+    user_id = ui.name_in1.toPlainText()
+    resources_crud.get_all_ssh(ui,user_id)
 
 def back_to_login(ui):
     ui.stackedWidget.setCurrentIndex(0)
@@ -411,7 +423,7 @@ if __name__ == "__main__":
     input = 8
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = grafic7.Ui_t()
+    ui = grafic12.Ui_t()
     ui.setupUi(MainWindow)
     set_labels(ui)
     MainWindow.show()
@@ -495,6 +507,8 @@ if __name__ == "__main__":
     ui.pushButton_66.clicked.connect(partial(back_to_moshahede_gheimat, ui))
     ui.pushButton_68.clicked.connect(partial(back_to_moshahede_gheimat, ui))
     ui.pushButton_89.clicked.connect(partial(back_to_moshahede_gheimat, ui))
+    ui.pushButton.clicked.connect(partial(send_ssh, ui))
+    ui.pushButton_4.clicked.connect(partial(print_all_user_ssh, ui))
 
     # connect snapshot button
     ui.snap_btn1.clicked.connect(partial(back_to_snapshot, ui))
