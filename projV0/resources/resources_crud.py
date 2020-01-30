@@ -61,6 +61,8 @@ def update_offered_resource(user_id, offered_id, new_offered):
 def add_user_resource(user_id, ordered):
     con = db.get_connection_func()
     cur = con.cursor()
+    if ordered.ssh_id == 'None':
+        ordered.ssh_id = None
     cur.execute(
         "insert into user_config (os, ram, cores, disk, cpu_freq, bound_rate,"
         " ssh_id, owner_id, offered_config_id)"
@@ -137,7 +139,7 @@ def add_ssh(user_id, ssh):
     con = db.get_connection_func()
     cur = con.cursor()
     cur.execute("insert into ssh(name, content, owner_id)"
-                "values (%s, %s, %s)",
+                " values (%s, %s, %s)",
                 (ssh.name, ssh.content, user_id))
 
     con.commit()
@@ -148,7 +150,7 @@ def get_all_ssh(user_id):
     con = db.get_connection_func()
     cur = con.cursor()
     cur.execute("select id, name, content from ssh"
-                "where  owner_id = %s",
+                " where  owner_id = %s",
                 (user_id,))
     rows = cur.fetchall()
 

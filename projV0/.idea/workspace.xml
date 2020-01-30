@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8117a873-76a9-4aea-bff3-bc6aaa216c17" name="Default Changelist" comment="اسنپ شات">
+    <list default="true" id="8117a873-76a9-4aea-bff3-bc6aaa216c17" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grafic.ui" beforeDir="false" afterPath="$PROJECT_DIR$/grafic.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grafic7.py" beforeDir="false" afterPath="$PROJECT_DIR$/grafic7.py" afterDir="false" />
@@ -23,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/resources_crud.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="41" column="62" lean-forward="true" selection-start-line="41" selection-start-column="62" selection-end-line="41" selection-end-column="62" />
+            <state relative-caret-position="316">
+              <caret line="154" column="25" lean-forward="true" selection-start-line="154" selection-start-column="25" selection-end-line="154" selection-end-column="25" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -63,7 +63,7 @@
         <entry file="file://$PROJECT_DIR$/resources/SSH.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
+              <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -95,20 +95,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grafic.ui">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="26112">
-              <caret line="5337" column="32" selection-start-line="5337" selection-start-column="32" selection-end-line="5337" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="313" column="41" selection-start-line="313" selection-start-column="41" selection-end-line="313" selection-end-column="41" />
+            <state relative-caret-position="270">
+              <caret line="141" column="25" selection-start-line="141" selection-start-column="25" selection-end-line="141" selection-end-column="25" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -127,12 +118,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>login</find>
-      <find>wallet_btn1</find>
-      <find>&quot;0&quot;</find>
-      <find>name_in1)</find>
-      <find>order</find>
-      <find>question</find>
       <find>date</find>
       <find>name_</find>
       <find>time.time()</find>
@@ -157,6 +142,12 @@
       <find>ram_</find>
       <find>getText()</find>
       <find>update</find>
+      <find>ui.sshkey_in2</find>
+      <find>manba</find>
+      <find>sshKey</find>
+      <find>sshkey_in</find>
+      <find>sshkry_in</find>
+      <find>sshk</find>
     </findStrings>
     <replaceStrings>
       <replace>\&quot;order\&quot;</replace>
@@ -193,10 +184,10 @@
         <option value="$PROJECT_DIR$/resources/snapshot_crud.py" />
         <option value="$PROJECT_DIR$/resources/Ordered.py" />
         <option value="$PROJECT_DIR$/database/database.py" />
-        <option value="$PROJECT_DIR$/grafic7.py" />
         <option value="$PROJECT_DIR$/grafic.ui" />
-        <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/resources/resources_crud.py" />
+        <option value="$PROJECT_DIR$/grafic7.py" />
+        <option value="$PROJECT_DIR$/test.py" />
       </list>
     </option>
   </component>
@@ -222,7 +213,7 @@
             <path>
               <item name="projV0" type="b2602c69:ProjectViewProjectNode" />
               <item name="projV0" type="462c0819:PsiDirectoryNode" />
-              <item name="ticket" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="projV0" type="b2602c69:ProjectViewProjectNode" />
@@ -510,7 +501,21 @@
       <option name="project" value="LOCAL" />
       <updated>1580338502477</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="مدیریت منابع">
+      <created>1580341405987</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1580341405987</updated>
+    </task>
+    <task id="LOCAL-00018" summary="مدیریت منابع">
+      <created>1580341527129</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1580341527129</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -584,7 +589,8 @@
     <MESSAGE value="create manba" />
     <MESSAGE value="ایجادمنبع" />
     <MESSAGE value="اسنپ شات" />
-    <option name="LAST_COMMIT_MESSAGE" value="اسنپ شات" />
+    <MESSAGE value="مدیریت منابع" />
+    <option name="LAST_COMMIT_MESSAGE" value="مدیریت منابع" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -596,7 +602,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/test.py</url>
-          <line>182</line>
+          <line>195</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -606,7 +612,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/test.py</url>
-          <line>208</line>
+          <line>221</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -616,7 +622,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/resources/resources_crud.py</url>
-          <line>116</line>
+          <line>118</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
@@ -808,30 +814,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ticket/ticket_crud.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="62" column="88" lean-forward="true" selection-start-line="57" selection-start-column="28" selection-end-line="62" selection-end-column="88" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grafic.ui">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26112">
-          <caret line="5337" column="32" selection-start-line="5337" selection-start-column="32" selection-end-line="5337" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="313" column="41" selection-start-line="313" selection-start-column="41" selection-end-line="313" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+          <caret line="5365" column="32" selection-start-line="5365" selection-start-column="32" selection-end-line="5365" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -848,16 +834,36 @@
     <entry file="file://$PROJECT_DIR$/resources/SSH.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
+          <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ticket/ticket_crud.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="62" column="88" lean-forward="true" selection-start-line="57" selection-start-column="28" selection-end-line="62" selection-end-column="88" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/resources_crud.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="41" column="62" lean-forward="true" selection-start-line="41" selection-start-column="62" selection-end-line="41" selection-end-column="62" />
+        <state relative-caret-position="316">
+          <caret line="154" column="25" lean-forward="true" selection-start-line="154" selection-start-column="25" selection-end-line="154" selection-end-column="25" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="141" column="25" selection-start-line="141" selection-start-column="25" selection-end-line="141" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>

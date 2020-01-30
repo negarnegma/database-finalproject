@@ -114,28 +114,42 @@ def back_to_ijadm(ui):
 
 
 def back_to_ijadm2(ui):
-    ui.stackedWidget.setCurrentIndex(4)
-    global chosen_config
-    if ui.checkBox.isChecked():
-        chosen_config = 1
-    if ui.checkBox_2.isChecked():
-        chosen_config = 2
-    if ui.checkBox_3.isChecked():
-        chosen_config = 3
-    if ui.checkBox_4.isChecked():
-        chosen_config = 4
-    if ui.checkBox_5.isChecked():
-        chosen_config = 5
-    if ui.checkBox_6.isChecked():
-        chosen_config = 6
-    print(chosen_config)
+    try:
+        ui.stackedWidget.setCurrentIndex(4)
+        global chosen_config
+        if ui.checkBox.isChecked():
+            chosen_config = 1
+        if ui.checkBox_2.isChecked():
+            chosen_config = 2
+        if ui.checkBox_3.isChecked():
+            chosen_config = 3
+        if ui.checkBox_4.isChecked():
+            chosen_config = 4
+        if ui.checkBox_5.isChecked():
+            chosen_config = 5
+        if ui.checkBox_6.isChecked():
+            chosen_config = 6
+        print(chosen_config)
 
-    ui.os_in2_2.setText(offered_configs[chosen_config - 1].os)
-    ui.core_in2_2.setText(offered_configs[chosen_config - 1].cores)
-    ui.storage_in2_2.setText(offered_configs[chosen_config - 1].disk)
-    ui.frequency_in2_2.setText(offered_configs[chosen_config - 1].cpu_freq)
-    ui.bandwidth_in2_2.setText(offered_configs[chosen_config - 1].bound_rate)
-    ui.ram_in2_2.setText(offered_configs[chosen_config - 1].ram)
+        ui.os_in2_2.setText(offered_configs[chosen_config - 1].os)
+        ui.core_in2_2.setText(offered_configs[chosen_config - 1].cores)
+        ui.storage_in2_2.setText(offered_configs[chosen_config - 1].disk)
+        ui.frequency_in2_2.setText(offered_configs[chosen_config - 1].cpu_freq)
+        ui.bandwidth_in2_2.setText(offered_configs[chosen_config - 1].bound_rate)
+        ui.ram_in2_2.setText(offered_configs[chosen_config - 1].ram)
+
+        sshHa = resources_crud.get_all_ssh(current_user_id)
+        ui.create_u_c_ssh.clear()
+        ui.create_u_c_ssh.addItem('None')
+        for c in sshHa:
+            ui.create_u_c_ssh.addItem(str(c.ssh_id))
+    except Exception as e:
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Warning)
+        msg.setText(str(e))
+        msg.setWindowTitle("Err..")
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.exec_()
 
 
 def back_to_taghir_moshakhasat(ui):
@@ -288,7 +302,7 @@ def get_user_conf_info(ui):
         ui.frequency_in2.setText(str(u_conf.cpu_freq))
         ui.bandwidth_in2.setText(str(u_conf.bound_rate))
         ui.ram_in2.setText(str(u_conf.ram))
-        ui.sshkey_in2_2.setText(str(u_conf.ssh_id))
+        ui.update_ssh.setText(str(u_conf.ssh_id))
         ui.offeredId_in2_2.setText(str(u_conf.offered_config_id))
 
     except Exception as e:
@@ -311,7 +325,7 @@ def update_user_conf_info(ui):
             float(ui.storage_in2.toPlainText()),
             float(ui.frequency_in2.toPlainText()),
             float(ui.bandwidth_in2.toPlainText()),
-            ui.sshkey_in2_2.toPlainText(),
+            ui.update_ssh.toPlainText(),
             float(current_user_id),
             0,
             int(ui.offeredId_in2_2.toPlainText())
@@ -338,7 +352,7 @@ def create_u_conf(ui):
             offered_configs[chosen_config - 1].disk,
             offered_configs[chosen_config - 1].cpu_freq,
             offered_configs[chosen_config - 1].bound_rate,
-            None,
+            ui.create_u_c_ssh.currentText(),
             current_user_id, 0,
             offered_configs[chosen_config - 1].offered_id
         ))
