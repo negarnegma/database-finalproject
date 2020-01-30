@@ -14,7 +14,7 @@ create table ssh
     id      serial primary key,
     name    varchar(50),
     content varchar(3000),
-    owner_id int references "user" (id),
+    owner_id int references "user" (id)
 
 );
 create table akshaye_tabriz
